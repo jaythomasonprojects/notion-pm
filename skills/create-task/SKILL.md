@@ -1,9 +1,9 @@
 ---
-name: notion-create-task
+name: create-task
 description: Create a new task in a Notion database. Schema-agnostic — discovers and maps properties dynamically.
 ---
 
-# Notion Create Task
+# Create Task
 
 Creates a new task page in a Notion tasks database. Discovers the database schema dynamically and maps user-provided information to available properties — never assumes a fixed schema.
 
@@ -75,6 +75,6 @@ Creates a new task page in a Notion tasks database. Discovers the database schem
 - **Schema-agnostic.** Never hardcode property names or assume specific values exist. Discover everything from the database schema.
 - **Be autonomous.** Don't ask the user for properties they didn't mention — just create the task with what you have. Minimal viable task = title + body.
 - **CLI plan as task body.** When the user says "upload this plan as a task" or "create a task from the plan", take the current plan content and use it directly as the page body. Format it for Notion but keep the structure.
-- **Duplicate check.** Before creating, search the database for tasks with similar titles. If a very close match exists, mention it but still create unless the user said "update" (in which case, use notion-update-task or notion-push instead).
+- **Duplicate check.** Before creating, search the database for tasks with similar titles. If a very close match exists, mention it but still create unless the user said "update" (in which case, use `update-task` or `push-page` instead).
 - **Don't force a project relation.** If the database has a project property and the user mentioned a project, set it. Otherwise skip it.
 - **Property value mapping.** When the user says "high priority", find the priority property and look for a value containing "high" (case-insensitive). Same for status, tags, etc.

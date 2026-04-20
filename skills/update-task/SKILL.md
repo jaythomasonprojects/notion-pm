@@ -1,9 +1,9 @@
 ---
-name: notion-update-task
+name: update-task
 description: Update a task's properties or content in Notion. Schema-agnostic, appends to content by default.
 ---
 
-# Notion Update Task
+# Update Task
 
 Updates an existing task's properties or page content. Discovers the schema dynamically and maps user intent to available properties. Content updates append by default — never overwrites unless explicitly asked.
 
@@ -56,4 +56,4 @@ Updates an existing task's properties or page content. Discovers the schema dyna
 - **Be confident.** If the user says "update task X to done", just do it. Don't ask for confirmation on simple property changes.
 - **Batch updates.** If the user wants multiple property changes, do them all in one API call.
 - **Section detection.** When appending to a section, find heading blocks (heading_2, heading_3) by text content to locate the right position.
-- **If the task doesn't exist**, say so. Don't create a new one — that's what notion-create-task is for.
+- **If the task doesn't exist**, say so. Don't create a new one — that's what `create-task` is for.

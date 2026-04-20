@@ -1,9 +1,9 @@
 ---
-name: notion-complete-task
+name: complete-task
 description: Mark a task as done/complete. Discovers the completion status dynamically from the database schema.
 ---
 
-# Notion Complete Task
+# Complete Task
 
 Marks a task as done/complete in Notion. Discovers the "done" or "complete" status option from the database schema rather than assuming a fixed value.
 

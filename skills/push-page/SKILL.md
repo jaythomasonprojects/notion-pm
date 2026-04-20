@@ -1,9 +1,9 @@
 ---
-name: notion-push
+name: push-page
 description: Push or update content to a Notion page. Upserts by title — updates existing pages, creates new ones if not found.
 ---
 
-# Notion Push
+# Push Page
 
 Pushes content from the CLI to Notion. If a page with the same title already exists in the target database, it updates that page. Otherwise, it creates a new one. Use this for syncing plans, research notes, implementation details, or any content back to Notion.
 

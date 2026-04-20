@@ -1,9 +1,9 @@
 ---
-name: notion-list-tasks
+name: list-tasks
 description: List and filter tasks from a Notion database. Schema-agnostic — discovers filterable properties dynamically.
 ---
 
-# Notion List Tasks
+# List Tasks
 
 Lists tasks from a Notion database with optional filtering. Discovers available properties dynamically and maps user filter requests to them.
 

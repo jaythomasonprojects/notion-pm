@@ -1,11 +1,11 @@
 ---
-name: notion-bug-report
-description: Create a structured bug report in Notion with reproduction steps, expected/actual behavior, and fix criteria.
+name: bug-report
+description: Create a structured bug report in Notion with reproduction steps, expected/actual behaviour, and fix criteria.
 ---
 
-# Notion Bug Report
+# Bug Report
 
-Creates a structured bug report page in a Notion tasks database. Formats the report with reproduction steps, expected/actual behavior, and fix criteria. Maps properties schema-agnostically.
+Creates a structured bug report page in a Notion tasks database. Formats the report with reproduction steps, expected/actual behaviour, and fix criteria. Maps properties schema-agnostically.
 
 ## Workflow
 
@@ -13,8 +13,8 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
    - Title (required) — a clear summary of the bug
    - What's broken (required) — description of the problem
    - Steps to reproduce (if known)
-   - Expected behavior
-   - Actual behavior
+   - Expected behaviour
+   - Actual behaviour
    - Severity/priority (if mentioned)
    - Any relevant context (error messages, screenshots description, affected area)
 
@@ -36,8 +36,8 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
 4. **Format the bug report page body:**
    - ## Description: the core problem statement
    - ## Steps to Reproduce: numbered list of steps (if provided)
-   - ## Expected Behavior: what should happen
-   - ## Actual Behavior: what actually happens
+   - ## Expected Behaviour: what should happen
+   - ## Actual Behaviour: what actually happens
    - ## Fix Criteria: checklist items defining what "fixed" means
    - Omit sections that have no content
    - If extra context provided (error messages, logs), add ## Additional Context section
@@ -58,6 +58,6 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
 - **Schema-agnostic.** Discover properties from the schema. If there's no "Bug" tag option, just skip the tag — don't fail.
 - **Be autonomous.** If the user provides enough info to file the bug, just file it. Don't ask for every field — a title and description are sufficient.
 - **Structured format.** Always use the structured sections (Description, Steps, Expected, Actual, Fix Criteria) when information is available. This makes bugs actionable.
-- **Don't over-prompt.** If the user gives you a vague bug report ("login is broken"), create the bug with what you have. They can update it later with notion-update-task.
+- **Don't over-prompt.** If the user gives you a vague bug report ("login is broken"), create the bug with what you have. They can update it later with `update-task`.
 - **Priority defaults.** If the user doesn't mention priority, don't set one (or use the database's default). Don't assume Medium.
 - **Fix Criteria vs Acceptance Criteria.** For bugs, use "Fix Criteria" as the section name with checkbox items describing what "fixed" means.

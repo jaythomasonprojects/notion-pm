@@ -1,9 +1,9 @@
 ---
-name: notion-pull
+name: pull-page
 description: Pull a page from Notion into the current CLI context. Retrieves properties and content as clean markdown.
 ---
 
-# Notion Pull
+# Pull Page
 
 Pulls a Notion page into your CLI context — properties and full content rendered as markdown. Works with any page: plans, tasks, research notes, documentation.
 
@@ -53,7 +53,7 @@ Pulls a Notion page into your CLI context — properties and full content render
 ## Important
 
 - **Be autonomous.** Don't ask the user to clarify unless you truly cannot determine which page they mean.
-- **Render content faithfully** but keep it concise. If a page has 100+ blocks, summarize very long sections and note "[truncated — X more blocks]".
+- **Render content faithfully** but keep it concise. If a page has 100+ blocks, summarise very long sections and note "[truncated — X more blocks]".
 - **Nested blocks:** Recurse into child blocks (toggles, columns, synced blocks). Indent nested content appropriately.
 - **If the page doesn't exist**, say so clearly. Don't suggest alternatives unless asked.
 - **Database pages vs standalone pages:** Handle both. Database pages have properties — render them. Standalone pages may not — that's fine.

@@ -28,7 +28,7 @@ The plugin includes the Notion MCP server — no additional MCP configuration ne
 
 ### 4. Usage
 
-No setup wizard. Skills discover databases and pages autonomously on first use, and memorize IDs for future sessions. Just ask any agent to do Notion things:
+No setup wizard. Skills discover databases and pages autonomously on first use, and memorise IDs for future sessions. Just ask any agent to do Notion things:
 
 - *"Pull down the auth redesign plan from Notion"*
 - *"Push this plan to Notion"*
@@ -40,13 +40,13 @@ No setup wizard. Skills discover databases and pages autonomously on first use, 
 
 | Skill | What it does |
 | --- | --- |
-| `notion-pull` | Pull any Notion page into CLI context as clean markdown |
-| `notion-push` | Push/upsert content to a Notion page (plans, research, notes) |
-| `notion-create-task` | Create a new task — schema-agnostic property mapping |
-| `notion-update-task` | Update task properties or content (append by default) |
-| `notion-complete-task` | Mark a task as done — discovers completion status dynamically |
-| `notion-list-tasks` | List/filter tasks with compact table output |
-| `notion-bug-report` | File a structured bug report with reproduction steps |
+| `pull-page` | Pull any Notion page into CLI context as clean markdown |
+| `push-page` | Push/upsert content to a Notion page (plans, research, notes) |
+| `create-task` | Create a new task — schema-agnostic property mapping |
+| `update-task` | Update task properties or content (append by default) |
+| `complete-task` | Mark a task as done — discovers completion status dynamically |
+| `list-tasks` | List/filter tasks with compact table output |
+| `bug-report` | File a structured bug report with reproduction steps |
 
 ## Design Principles
 
