@@ -29,7 +29,7 @@ Marks a task as done/complete in Notion. Discovers the "done" or "complete" stat
 4. **Set completion:**
    - Update the status property to the discovered "done" option
    - If a "completed on" or "completed date" or "done date" property exists (date type): set it to today's date
-   - If the user provides a summary: append it to the page as a "## Final Summary" section
+   - If the user provides a summary: append a `heading_2` block titled `Final Summary`, followed by paragraph, list, to-do, or code blocks derived from the summary content
 
 5. **Report completion state:**
    - If the page has to-do/checkbox items: report their state
@@ -46,5 +46,6 @@ Marks a task as done/complete in Notion. Discovers the "done" or "complete" stat
 - **Schema-agnostic.** Discover the "done" option dynamically. Never hardcode "Done" as the value.
 - **Be confident.** If the user says "complete task X", do it. Don't ask "are you sure?" or validate acceptance criteria.
 - **Final summary is optional.** Only append one if the user provides summary content. Don't prompt for it.
+- **Summary formatting.** Never append raw `## Final Summary`, checklist syntax, or other markdown markers as plain text. Convert the summary into proper Notion blocks first.
 - **Completion date.** Only set if a date property clearly represents completion exists. Don't create properties.
 - **If already done:** Tell the user it's already marked complete. Don't error.

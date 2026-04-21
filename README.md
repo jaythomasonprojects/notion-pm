@@ -53,5 +53,6 @@ No setup wizard. Skills discover databases and pages autonomously on first use, 
 - **Any agent, any time.** No dedicated agent needed — works with your main agent, anvil, or any custom agent.
 - **Schema-agnostic.** Skills discover database properties dynamically. Works with any Notion database structure.
 - **Autonomous.** Silently memorizes database/page IDs. Searches Notion when needed. Only asks you when genuinely stuck.
+- **Block-first writes.** When skills push or add content, they should convert it into real Notion blocks rather than leaving raw markdown markers in the page.
 - **Push/pull model.** Pull pages into CLI context. Push CLI content back to Notion. Upserts by title — updates existing pages, creates new ones.
 - **Minimal interruption.** Confident on routine operations. No confirmation dialogs for simple changes.

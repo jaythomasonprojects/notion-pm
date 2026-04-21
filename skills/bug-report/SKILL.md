@@ -33,19 +33,20 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
      - Assignee -> leave empty unless user specifies
    - Skip properties that don't exist — never error on missing properties
 
-4. **Format the bug report page body:**
-   - ## Description: the core problem statement
-   - ## Steps to Reproduce: numbered list of steps (if provided)
-   - ## Expected Behaviour: what should happen
-   - ## Actual Behaviour: what actually happens
-   - ## Fix Criteria: checklist items defining what "fixed" means
+4. **Build the bug report page body as Notion blocks:**
+   - Always create a proper Notion block sequence. Never write the section outline as raw markdown or plain text.
+   - `Description` → `heading_2` block, then one or more `paragraph` blocks with the core problem statement
+   - `Steps to Reproduce` → `heading_2` block, then `numbered_list_item` blocks for each step
+   - `Expected Behaviour` → `heading_2` block, then `paragraph` blocks
+   - `Actual Behaviour` → `heading_2` block, then `paragraph` blocks
+   - `Fix Criteria` → `heading_2` block, then one `to_do` block per criterion
+   - `Additional Context` → `heading_2` block, then paragraph, quote, or code blocks for logs, errors, or other supporting details
    - Omit sections that have no content
-   - If extra context provided (error messages, logs), add ## Additional Context section
 
 5. **Create the page:**
    - Call `mcp__notionApi` Create page in the target database
    - Set properties from step 3
-   - Set content from step 4
+   - Set `children` from the block array in step 4
 
 6. **Store to memory (silent):**
    - `store_memory` the page ID: `notion_page:{title}`
@@ -58,6 +59,7 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
 - **Schema-agnostic.** Discover properties from the schema. If there's no "Bug" tag option, just skip the tag — don't fail.
 - **Be autonomous.** If the user provides enough info to file the bug, just file it. Don't ask for every field — a title and description are sufficient.
 - **Structured format.** Always use the structured sections (Description, Steps, Expected, Actual, Fix Criteria) when information is available. This makes bugs actionable.
+- **Block-first writes.** Section headings, reproduction steps, and fix criteria must be written as proper Notion blocks, not literal markdown like `##` or `- [ ]`.
 - **Don't over-prompt.** If the user gives you a vague bug report ("login is broken"), create the bug with what you have. They can update it later with `update-task`.
 - **Priority defaults.** If the user doesn't mention priority, don't set one (or use the database's default). Don't assume Medium.
 - **Fix Criteria vs Acceptance Criteria.** For bugs, use "Fix Criteria" as the section name with checkbox items describing what "fixed" means.

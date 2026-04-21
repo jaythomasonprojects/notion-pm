@@ -36,10 +36,12 @@ Updates an existing task's properties or page content. Discovers the schema dyna
    - For relation changes: resolve the related page ID first
 
 6. **Apply content changes:**
-   - **Append (default):** Add new blocks after existing content. If adding to a specific section (e.g., "add to implementation notes"), find that heading and append after it.
-   - **Replace section:** If the user says "replace the description" or "update the plan", find the section heading and replace blocks between it and the next heading.
+   - First convert any user-provided notes, summaries, checklists, plans, or prose into the right Notion block sequence (paragraph, heading, bulleted list, numbered list, to_do, quote, code, divider, and so on).
+   - **Append (default):** Add the new block sequence after existing content. If adding to a specific section (e.g., "add to implementation notes"), find that heading and insert the new blocks before the next heading. If the heading is missing, append to the end of the page.
+   - **Replace section:** If the user says "replace the description" or "update the plan", find the section heading and replace the blocks between it and the next heading with the newly constructed block sequence.
    - **Check/uncheck to-do items:** Find the specific to_do block and update its checked state.
    - **Never replace the entire page content** unless the user explicitly says so.
+   - Never append literal markdown markers, section boilerplate, or fenced code blocks as plain text unless the user explicitly wants raw text.
 
 7. **Store to memory (silent):**
    - `store_memory` the page ID: `notion_page:{title}` and `notion_task:{id}` if applicable
@@ -55,5 +57,6 @@ Updates an existing task's properties or page content. Discovers the schema dyna
 - **Schema-agnostic.** Discover properties dynamically. Don't assume property names or values.
 - **Be confident.** If the user says "update task X to done", just do it. Don't ask for confirmation on simple property changes.
 - **Batch updates.** If the user wants multiple property changes, do them all in one API call.
+- **Block-first updates.** Any added or replaced content must be written as proper Notion blocks, not markdown strings.
 - **Section detection.** When appending to a section, find heading blocks (heading_2, heading_3) by text content to locate the right position.
 - **If the task doesn't exist**, say so. Don't create a new one — that's what `create-task` is for.
