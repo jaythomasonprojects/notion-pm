@@ -34,14 +34,23 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
    - Skip properties that don't exist — never error on missing properties
 
 4. **Build the bug report page body as Notion blocks:**
-   - Always create a proper Notion block sequence. Never write the section outline as raw markdown or plain text.
-   - `Description` → `heading_2` block, then one or more `paragraph` blocks with the core problem statement
-   - `Steps to Reproduce` → `heading_2` block, then `numbered_list_item` blocks for each step
-   - `Expected Behaviour` → `heading_2` block, then `paragraph` blocks
-   - `Actual Behaviour` → `heading_2` block, then `paragraph` blocks
-   - `Fix Criteria` → `heading_2` block, then one `to_do` block per criterion
-   - `Additional Context` → `heading_2` block, then paragraph, quote, or code blocks for logs, errors, or other supporting details
-   - Omit sections that have no content
+
+   Never write section outlines as raw markdown or plain text — always construct proper Notion block sequences. Omit any section where content is unavailable.
+
+   **Always include:**
+   - `Description` — `heading_2` block, then one or more `paragraph` blocks with the core problem statement; for exceptions, include `{ErrorType}: {message}` and the culprit line
+   - `Fix Criteria` — `heading_2` block, then one `to_do` block per criterion; tailor items to context
+
+   **Include when available:**
+   - `Steps to Reproduce` — `heading_2` block, then `numbered_list_item` blocks; omit for exception-based bugs where a stack trace is more useful
+   - `Stack Trace` — `heading_2` block, then a `code` block with the top 5 application-layer frames; omit for ad-hoc reports without trace data
+   - `Expected Behaviour` — `heading_2` block, then `paragraph` blocks; omit when self-evident from the exception
+   - `Actual Behaviour` — `heading_2` block, then `paragraph` blocks; omit when self-evident from the exception
+   - `Affected Files / Components` — `heading_2` block, then `bulleted_list_item` blocks for each path; omit if unknown
+   - `Triage` — `heading_2` block, then `paragraph` blocks for category and severity, each with a one-sentence rationale; include even for ad-hoc bugs when context allows a reasonable determination
+   - `Source` — `heading_2` block, then `paragraph` or `bulleted_list_item` blocks for provenance metadata (Sentry: issue ID, URL, first/last seen, event count, users affected; ad-hoc: environment, reporter, version, or other relevant context)
+
+   Section order: Description → Steps to Reproduce → Stack Trace → Expected Behaviour → Actual Behaviour → Affected Files / Components → Triage → Source → Fix Criteria
 
 5. **Create the page:**
    - Call `mcp__notionApi` Create page in the target database
@@ -58,8 +67,9 @@ Creates a structured bug report page in a Notion tasks database. Formats the rep
 
 - **Schema-agnostic.** Discover properties from the schema. If there's no "Bug" tag option, just skip the tag — don't fail.
 - **Be autonomous.** If the user provides enough info to file the bug, just file it. Don't ask for every field — a title and description are sufficient.
-- **Structured format.** Always use the structured sections (Description, Steps, Expected, Actual, Fix Criteria) when information is available. This makes bugs actionable.
+- **Structured format.** Use the unified section order: Description → Steps to Reproduce → Stack Trace → Expected Behaviour → Actual Behaviour → Affected Files / Components → Triage → Source → Fix Criteria. Only include sections where content is available; never leave a section empty.
+- **Steps vs Stack Trace.** These are parallel, not interchangeable. Steps apply to ad-hoc reports; Stack Trace applies to exception-based bugs. Both can appear together if both are available.
 - **Block-first writes.** Section headings, reproduction steps, and fix criteria must be written as proper Notion blocks, not literal markdown like `##` or `- [ ]`.
 - **Don't over-prompt.** If the user gives you a vague bug report ("login is broken"), create the bug with what you have. They can update it later with `update-task`.
 - **Priority defaults.** If the user doesn't mention priority, don't set one (or use the database's default). Don't assume Medium.
-- **Fix Criteria vs Acceptance Criteria.** For bugs, use "Fix Criteria" as the section name with checkbox items describing what "fixed" means.
+- **Fix Criteria vs Acceptance Criteria.** For bugs, always use "Fix Criteria" as the section name.

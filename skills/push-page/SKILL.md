@@ -21,7 +21,7 @@ Pushes content from the CLI to Notion. If a page with the same title already exi
    - If still ambiguous: ask the user which database to target (this is the ONE case where asking is appropriate)
 
 3. **Resolve the target database:**
-   - Check memory for `notion_db:{name}` 
+   - Check memory for `notion_db:{name}`
    - If not in memory, search Notion for databases matching the user's description
    - Once found, silently `store_memory` as `notion_db:{name}`
 
